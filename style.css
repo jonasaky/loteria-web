@@ -1,0 +1,697 @@
+/* Reset básico */
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+font-family: Helvetica, Arial, sans-serif;
+background: #f0f4ff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+padding: 1rem 0;
+}
+
+.container {
+background:#fff;
+padding:2rem;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.1);
+text-align:center;
+width:320px;
+flex: 1;
+margin-bottom: auto;
+}
+
+h1 { margin-bottom:1rem; color:#0066cc; }
+
+#card-area {
+position:relative;
+height:260px;
+margin-bottom:1rem;
+}
+#card-img {
+max-width:100%;
+max-height:100%;
+position:absolute;
+left:50%; top:-300px; /* empieza fuera de la vista */
+transform:translateX(-50%);
+transition: top .5s ease-out;
+}
+#card-name {
+font-size:1.2rem;
+margin-top:1rem;
+min-height:1.4rem; /* espacio reservado */
+}
+
+button {
+background:#0066cc;
+color:#fff;
+border:none;
+padding:.8rem 1.2rem;
+font-size:1rem;
+border-radius:6px;
+cursor:pointer;
+transition:background .2s;
+}
+
+.game-controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+#auto-btn {
+    background: #28a745;
+    position: relative;
+    overflow: hidden;
+}
+
+#auto-btn:hover {
+    background: #218838;
+}
+
+#auto-btn.auto-active {
+    background: #dc3545;
+    animation: pulse 1.5s infinite;
+}
+
+#auto-btn.auto-active:hover {
+    background: #c82333;
+}
+
+button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button:disabled:hover {
+    background: #6c757d;
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+    50% { 
+        transform: scale(1.05); 
+        box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+    }
+}
+
+#message {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+    color: #666;
+}
+
+#card-history {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+#card-history h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+#history-cards {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.history-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    color: #495057;
+    min-width: 80px;
+    text-align: center;
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+.history-card:nth-child(1) { animation-delay: 0.1s; }
+.history-card:nth-child(2) { animation-delay: 0.2s; }
+.history-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== WINNERS SECTION ==================== */
+#winners-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+#winners-section h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+#winners-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 0.5rem;
+}
+
+.winner-item {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border: 1px solid #f39c12;
+    border-radius: 6px;
+    padding: 0.5rem 0.8rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    animation: slideInRight 0.4s ease forwards;
+}
+
+.winner-item:last-child {
+    margin-bottom: 0;
+}
+
+.winner-name {
+    font-weight: 600;
+    color: #8b4513;
+}
+
+.winner-date {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+#clear-winners-btn {
+    background: #dc3545;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    margin-top: 0.5rem;
+}
+
+#clear-winners-btn:hover {
+    background: #c82333;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==================== MODAL STYLES ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    animation: slideInDown 0.3s ease;
+}
+
+.modal-content h2 {
+    color: #0066cc;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+#winner-name {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+#winner-name:focus {
+    outline: none;
+    border-color: #0066cc;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-buttons button {
+    flex: 1;
+    min-width: 120px;
+    margin: 0;
+}
+
+#skip-winner-btn {
+    background: #6c757d;
+}
+
+#skip-winner-btn:hover {
+    background: #5a6268;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+button:hover { background:#004c99; }
+
+/* ==================== FOOTER STYLES ==================== */
+footer {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 2s ease;
+}
+
+footer:hover::before {
+    left: 100%;
+}
+
+footer p {
+    margin: 0 0 0.3rem 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+footer p strong {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Mobile First Approach - Base styles already mobile-friendly */
+
+/* Small screens (phones in portrait) */
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 350px;
+        padding: 1.5rem;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    #card-area {
+        height: 320px;
+        margin-bottom: 1.5rem;
+    }
+    
+    #card-img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+    
+    #card-name {
+        font-size: 1.1rem;
+        margin-top: 0.8rem;
+        line-height: 1.3;
+        word-wrap: break-word;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    button {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 0;
+        border-radius: 8px;
+        touch-action: manipulation; /* Improve touch response */
+    }
+    
+    #auto-btn {
+        font-size: 1rem;
+    }
+    
+    #message {
+        font-size: 1rem;
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border-radius: 6px;
+        background-color: #f8f9fa;
+    }
+    
+    #card-history {
+        margin-top: 1rem;
+    }
+    
+    #card-history h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .history-card {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        min-width: 70px;
+    }
+    
+    footer {
+        margin: 1.5rem auto 0;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        max-width: 350px;
+    }
+    
+    footer p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    /* Winners section mobile styles */
+    #winners-section h3 {
+        font-size: 0.85rem;
+    }
+    
+    .winner-item {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+    
+    .winner-date {
+        font-size: 0.65rem;
+    }
+    
+    #clear-winners-btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.8rem;
+    }
+    
+    /* Modal mobile styles */
+    .modal-content {
+        margin: 5% auto;
+        padding: 1.5rem;
+        width: 95%;
+        max-width: 350px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .modal-buttons button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Medium screens (tablets, large phones in landscape) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 400px;
+        padding: 2.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    #card-area {
+        height: 280px;
+    }
+    
+    #card-name {
+        font-size: 1.3rem;
+    }
+    
+    .game-controls {
+        gap: 0.75rem;
+    }
+    
+    button {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        margin: 0;
+        min-width: 140px;
+        flex: 1;
+    }
+    
+    #auto-btn {
+        min-width: 100px;
+        flex: 0 0 auto;
+    }
+    
+    #card-history h3 {
+        font-size: 0.9rem;
+    }
+    
+    .history-card {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    footer {
+        margin-top: 1.8rem;
+        padding: 1.2rem 2rem;
+        max-width: 500px;
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 769px) {
+    .container {
+        width: 450px;
+        padding: 3rem;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    #card-area {
+        height: 320px;
+        margin-bottom: 2rem;
+    }
+    
+    #card-name {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+    }
+    
+    button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        margin: 0 0.75rem 0.75rem 0;
+        min-width: 180px;
+    }
+    
+    footer {
+        margin-top: 2.5rem;
+        padding: 2rem 3rem;
+        max-width: 600px;
+    }
+    
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (pointer: coarse) {
+    button {
+        min-height: 44px; /* Apple's recommended minimum touch target */
+        padding: 1rem;
+    }
+    
+    /* Remove hover effects on touch devices */
+    button:hover {
+        background: #0066cc;
+    }
+    
+    button:active {
+        background: #004c99;
+        transform: scale(0.98);
+        transition: all 0.1s ease;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        align-items: center;
+        padding: 1rem;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 600px;
+        padding: 1.5rem;
+    }
+    
+    #card-area {
+        height: 180px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    button {
+        display: inline-block;
+        width: auto;
+        margin: 0 0.5rem 0.5rem 0;
+        min-width: 140px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #card-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1a1a2e;
+        color: #eee;
+    }
+    
+    .container {
+        background: #16213e;
+        box-shadow: 0 4px 12px rgba(0,0,0,.3);
+    }
+    
+    h1 {
+        color: #4a9eff;
+    }
+    
+    #message {
+        background-color: #2a2a3e;
+        color: #ccc;
+    }
+    
+    button {
+        background: #4a9eff;
+    }
+    
+    button:hover, button:active {
+        background: #357abd;
+    }
+    
+    footer {
+        background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
+        color: #eee;
+        box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    }
+    
+    footer::before {
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    }
+}

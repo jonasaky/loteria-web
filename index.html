@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotería – Sacar carta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Lotería García's</h1>
+
+        <!-- Área donde aparecerá la carta -->
+        <div id="card-area">
+            <!-- Imagen (se inserta vía JS) -->
+            <img id="card-img" src="" alt="Carta" hidden>
+            <!-- Nombre de la carta -->
+            <p id="card-name"></p>
+        </div>
+
+        <div class="game-controls">
+            <button id="draw-btn">Sacar carta</button>
+            <button id="auto-btn">🎲 Auto</button>
+            <button id="restart-btn" style="display: none;">Reiniciar juego</button>
+        </div>
+        <p id="message"></p>
+        
+        <!-- Historial de últimas cartas -->
+        <div id="card-history">
+            <h3>Últimas cartas:</h3>
+            <div id="history-cards"></div>
+        </div>
+        
+        <!-- Historial de ganadores -->
+        <div id="winners-section">
+            <h3>🏆 Salón de la Fama</h3>
+            <div id="winners-list"></div>
+            <button id="clear-winners-btn" style="display: none;">Limpiar historial</button>
+        </div>
+    </div>
+
+    <!-- Modal para capturar nombre del ganador -->
+    <div id="winner-modal" class="modal">
+        <div class="modal-content">
+            <h2>🎉 ¡Felicidades!</h2>
+            <p>¡Has completado toda la baraja!</p>
+            <input type="text" id="winner-name" placeholder="Ingresa tu nombre" maxlength="25">
+            <div class="modal-buttons">
+                <button id="save-winner-btn">Guardar en el Salón de la Fama</button>
+                <button id="skip-winner-btn">Saltar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Música de fondo (se inicia automáticamente) -->
+    <audio id="bg-music" loop src="sounds/bg_loop.mp3"></audio>
+
+    <footer>
+        <p>© 2025 <strong>Lotería García's</strong> por Jonas García</p>
+        <p>Todos los derechos reservados • Hecho con ❤️ en México</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
