@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Fondo -->
+  <rect width="16" height="16" fill="#0066cc" rx="2"/>
+  <!-- Carta -->
+  <rect x="2" y="2" width="12" height="12" rx="1" fill="#fff"/>
+  <!-- Corazón -->
+  <path d="M8 12 C6 10, 4 8, 6 6 C7 5, 9 5, 10 6 C12 8, 10 10, 8 12 Z" fill="#DC143C"/>
+  <!-- L -->
+  <text x="8" y="7" text-anchor="middle" font-family="serif" font-size="5" font-weight="bold" fill="#0066cc">L</text>
+</svg>

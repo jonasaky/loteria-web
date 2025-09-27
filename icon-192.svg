@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <!-- Fondo principal con gradiente -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#004c99;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="4" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <rect width="192" height="192" fill="url(#bg)" rx="24"/>
+  
+  <!-- Carta principal con sombra -->
+  <rect x="24" y="24" width="144" height="144" rx="18" fill="#fff" stroke="#228B22" stroke-width="3" filter="url(#shadow)"/>
+  
+  <!-- Decoraciones de esquinas -->
+  <circle cx="48" cy="48" r="8" fill="#DC143C"/>
+  <circle cx="144" cy="48" r="8" fill="#DC143C"/>
+  <circle cx="48" cy="144" r="8" fill="#DC143C"/>
+  <circle cx="144" cy="144" r="8" fill="#DC143C"/>
+  
+  <!-- Símbolo central - Corazón elaborado -->
+  <path d="M96 132 C78 114, 60 96, 78 78 C84 72, 108 72, 114 78 C132 96, 114 114, 96 132 Z" fill="#DC143C"/>
+  
+  <!-- Texto "L" grande y elegante -->
+  <text x="96" y="80" text-anchor="middle" font-family="serif" font-size="36" font-weight="bold" fill="#0066cc">L</text>
+  
+  <!-- Decoraciones mexicanas -->
+  <rect x="36" y="36" width="120" height="6" fill="#228B22"/>
+  <rect x="36" y="150" width="120" height="6" fill="#228B22"/>
+  <rect x="36" y="42" width="120" height="3" fill="#FFD700"/>
+  <rect x="36" y="147" width="120" height="3" fill="#FFD700"/>
+  
+  <!-- Detalles adicionales -->
+  <rect x="36" y="36" width="6" height="120" fill="#FFD700"/>
+  <rect x="150" y="36" width="6" height="120" fill="#FFD700"/>
+</svg>

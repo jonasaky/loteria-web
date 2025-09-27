@@ -4,14 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotería – Sacar carta</title>
+    <title>Lotería García's</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="favicon-16.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon-32.svg">
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.svg">
+    <link rel="apple-touch-icon" href="icon-192.svg">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Meta tags for PWA -->
+    <meta name="theme-color" content="#0066cc">
+    <meta name="description" content="Juego tradicional mexicano de lotería digital - Lotería García's">
+    <meta name="author" content="Jonas García">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lotería García's">
+    <meta property="og:description" content="Juego tradicional mexicano de lotería digital">
+    <meta property="og:image" content="favicon.svg">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="container">
-        <h1>Lotería García's</h1>
+        <h1>Lotería</h1>
 
         <!-- Área donde aparecerá la carta -->
         <div id="card-area">
@@ -26,6 +48,7 @@
             <button id="auto-btn">🎲 Auto</button>
             <button id="restart-btn" style="display: none;">Reiniciar juego</button>
         </div>
+        
         <p id="message"></p>
         
         <!-- Historial de últimas cartas -->
@@ -40,6 +63,28 @@
             <div id="winners-list"></div>
             <button id="clear-winners-btn" style="display: none;">Limpiar historial</button>
         </div>
+
+        <!-- Configuración del modo automático -->
+        <div id="auto-config" class="auto-config">
+            <div class="config-header">
+                <span class="config-title">⚙️ Configuración</span>
+                <button id="config-toggle" class="config-toggle">▼</button>
+            </div>
+            <div id="config-panel" class="config-panel">
+                <div class="speed-control">
+                    <label for="speed-slider">Velocidad entre cartas:</label>
+                    <div class="slider-container">
+                        <input type="range" id="speed-slider" min="500" max="5000" step="250" value="2000">
+                        <span id="speed-display">2.0s</span>
+                    </div>
+                    <div class="speed-presets">
+                        <button class="preset-btn" data-speed="2000">🐰 Rápido</button>
+                        <button class="preset-btn" data-speed="3000">🕰️ Normal</button>
+                        <button class="preset-btn active" data-speed="4000">🐢 Lento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal para capturar nombre del ganador -->
@@ -47,9 +92,9 @@
         <div class="modal-content">
             <h2>🎉 ¡Felicidades!</h2>
             <p>¡Has completado toda la baraja!</p>
-            <input type="text" id="winner-name" placeholder="Ingresa tu nombre" maxlength="25">
+            <input type="text" id="winner-name" placeholder="Ingresa el nombre del ganador" maxlength="25">
             <div class="modal-buttons">
-                <button id="save-winner-btn">Guardar en el Salón de la Fama</button>
+                <button id="save-winner-btn">Guardar</button>
                 <button id="skip-winner-btn">Saltar</button>
             </div>
         </div>
@@ -59,7 +104,7 @@
     <audio id="bg-music" loop src="sounds/bg_loop.mp3"></audio>
 
     <footer>
-        <p>© 2025 <strong>Lotería García's</strong> por Jonas García</p>
+        <p>© 2025 <strong>Lotería García's</strong> por Jonasaky</p>
         <p>Todos los derechos reservados • Hecho con ❤️ en México</p>
     </footer>
 

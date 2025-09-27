@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Fondo principal -->
+  <rect width="64" height="64" fill="#0066cc" rx="8"/>
+  
+  <!-- Carta principal -->
+  <rect x="8" y="8" width="48" height="48" rx="6" fill="#fff" stroke="#228B22" stroke-width="2"/>
+  
+  <!-- Decoraciones de esquinas -->
+  <circle cx="16" cy="16" r="3" fill="#DC143C"/>
+  <circle cx="48" cy="16" r="3" fill="#DC143C"/>
+  <circle cx="16" cy="48" r="3" fill="#DC143C"/>
+  <circle cx="48" cy="48" r="3" fill="#DC143C"/>
+  
+  <!-- Símbolo central - Corazón de lotería -->
+  <path d="M32 45 C26 39, 20 33, 26 27 C28 25, 36 25, 38 27 C44 33, 38 39, 32 45 Z" fill="#DC143C"/>
+  
+  <!-- Texto "L" estilizado -->
+  <text x="32" y="28" text-anchor="middle" font-family="serif" font-size="14" font-weight="bold" fill="#0066cc">L</text>
+  
+  <!-- Decoración mexicana -->
+  <rect x="12" y="12" width="40" height="2" fill="#228B22"/>
+  <rect x="12" y="50" width="40" height="2" fill="#228B22"/>
+  <rect x="12" y="14" width="40" height="1" fill="#FFD700"/>
+  <rect x="12" y="49" width="40" height="1" fill="#FFD700"/>
+</svg>

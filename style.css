@@ -103,6 +103,175 @@ button:disabled:hover {
     }
 }
 
+/* ==================== AUTO CONFIGURATION PANEL ==================== */
+.auto-config {
+    margin: 1rem 0;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: #e9ecef;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s ease;
+}
+
+.config-header:hover {
+    background: #dee2e6;
+}
+
+.config-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.config-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    min-width: auto;
+    width: auto;
+}
+
+.config-toggle:hover {
+    background: rgba(0,0,0,0.1);
+    color: #495057;
+}
+
+.config-toggle.expanded {
+    transform: rotate(180deg);
+}
+
+.config-panel {
+    padding: 1rem;
+    display: none;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.speed-control label {
+    display: block;
+    font-size: 0.85rem;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+#speed-slider {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: #dee2e6;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#speed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0066cc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#speed-slider::-webkit-slider-thumb:hover {
+    background: #004c99;
+    transform: scale(1.1);
+}
+
+#speed-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0066cc;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+#speed-display {
+    background: #0066cc;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    min-width: 40px;
+    text-align: center;
+}
+
+.speed-presets {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.preset-btn {
+    background: #fff;
+    border: 2px solid #dee2e6;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #495057;
+    min-width: auto;
+    width: auto;
+}
+
+.preset-btn:hover {
+    border-color: #0066cc;
+    background: #f8f9fa;
+    color: #0066cc;
+}
+
+.preset-btn.active {
+    background: #0066cc;
+    border-color: #0066cc;
+    color: white;
+}
+
+.preset-btn.active:hover {
+    background: #004c99;
+    border-color: #004c99;
+}
+
 #message {
     font-size: 0.9rem;
     margin-top: 0.5rem;
@@ -504,6 +673,42 @@ footer p strong {
     .modal-buttons button {
         width: 100%;
         margin-bottom: 0.5rem;
+    }
+    
+    /* Auto configuration mobile styles */
+    .config-header {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .config-title {
+        font-size: 0.85rem;
+    }
+    
+    .config-panel {
+        padding: 0.8rem;
+    }
+    
+    .speed-presets {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    
+    .preset-btn {
+        width: 100%;
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .slider-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    #speed-display {
+        align-self: center;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
     }
 }
 
